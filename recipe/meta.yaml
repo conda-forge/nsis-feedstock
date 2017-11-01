@@ -5,13 +5,29 @@ package:
   version: {{ version }}
 
 source:
-  fn: nsis-{{ version }}.zip
-  url: http://sourceforge.net/projects/nsis/files/NSIS%20{{ version.split(".")[0] }}/{{ version }}/nsis-{{ version }}.zip
-  sha256: daa17556c8690a34fb13af25c87ced89c79a36a935bf6126253a9d9a5226367c
+  fn: nsis-{{ version }}.tar.bz2
+  url: http://sourceforge.net/projects/nsis/files/NSIS%20{{ version.split(".")[0] }}/{{ version }}/nsis-{{ version }}-src.tar.bz2
+  sha256: 604c011593be484e65b2141c50a018f1b28ab28c994268e4ecd377773f3ffba1
 
 build:
   number: 0
-  skip: true  # [unix]
+  skip: true  # [not (win and py27)]
+  script:
+    - set
+    - set "MSSDK=%WindowsSdkDir%"
+    - scons ZLIB_W32="%LIBRARY_PREFIX%"     # [win32]
+    - scons ZLIB_W64="%LIBRARY_PREFIX%"     # [win64]
+    - scons PREFIX="%PREFIX%" install
+
+requirements:
+  build:
+    - python
+    - scons
+    - zlib 1.2.*
+
+  run:
+    - vs2008_runtime
+    - zlib 1.2.*
 
 about:
   home: http://sourceforge.net/projects/nsis
