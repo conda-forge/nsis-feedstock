@@ -17,6 +17,7 @@ jobs:
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
+    MINIFORGE_HOME: D:\Miniforge
     UPLOAD_TEMP: D:\\tmp
 
   steps:
@@ -27,15 +28,15 @@ jobs:
         scriptSource: inline
         script: |
           import urllib.request
-          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe'
+          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe'
           path = r"$(Build.ArtifactStagingDirectory)/Miniforge.exe"
           urllib.request.urlretrieve(url, path)
 
     - script: |
-        start /wait "" %BUILD_ARTIFACTSTAGINGDIRECTORY%\Miniforge.exe /InstallationType=JustMe /RegisterPython=0 /S /D=C:\Miniforge
+        start /wait "" %BUILD_ARTIFACTSTAGINGDIRECTORY%\Miniforge.exe /InstallationType=JustMe /RegisterPython=0 /S /D=$(MINIFORGE_HOME)
       displayName: Install Miniforge
 
-    - powershell: Write-Host "##vso[task.prependpath]C:\Miniforge\Scripts"
+    - powershell: Write-Host "##vso[task.prependpath]$(MINIFORGE_HOME)\Scripts"
       displayName: Add conda to PATH
 
     - script: |
