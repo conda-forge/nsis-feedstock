@@ -1,4 +1,4 @@
-{% set version = "3.11" %}
+{% set version = "3.12" %}
 
 package:
   name: nsis
@@ -6,15 +6,15 @@ package:
 
 source:
   - url: http://sourceforge.net/projects/nsis/files/NSIS%20{{ version.split(".")[0] }}/{{ version }}/nsis-{{ version }}.zip
-    sha256: c7d27f780ddb6cffb4730138cd1591e841f4b7edb155856901cdf5f214394fa1
+    sha256: 56581f90db321581c5381193d796fffcf2d24b2f8fed2160a6c6a3baa67f2c4f
     folder: binary
 
   - url: http://sourceforge.net/projects/nsis/files/NSIS%20{{ version.split(".")[0] }}/{{ version }}/nsis-{{ version }}-log.zip  # [win and nsis_variant == 'log_enabled']
-    sha256: fe2e643a85c881bc46913394a737bf4fa653d9e42416940c718c603139f877c1  # [win and nsis_variant == 'log_enabled']
+    sha256: 2be7cfed1fec5c88104b0ace5adbe968973484d01f8274aa4eb0338f58a46412  # [win and nsis_variant == 'log_enabled']
     folder: binary_with_logging  # [win and nsis_variant == 'log_enabled']
 
   - url: http://sourceforge.net/projects/nsis/files/NSIS%20{{ version.split(".")[0] }}/{{ version }}/nsis-{{ version }}-src.tar.bz2  # [unix]
-    sha256: 19e72062676ebdc67c11dc032ba80b979cdbffd3886c60b04bb442cdd401ff4b  # [unix]
+    sha256: f3ed7a8e4aa2cf4e8cf47d3b563a02559e0cb4934db2662b2f9661b824e2b186  # [unix]
     folder: src  # [unix]
     patches:   # [unix]
       - 0001-Always-use-relative-paths-for-CONF-and-DATA-directories.patch  # [unix]
