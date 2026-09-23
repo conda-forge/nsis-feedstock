@@ -53,6 +53,7 @@ requirements:
   host:
     - zlib   # [unix]
   run:
+    - __win  # [win]
 
 test:
   commands:
