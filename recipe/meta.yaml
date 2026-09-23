@@ -2,7 +2,7 @@
 
 package:
   name: nsis
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   - url: http://sourceforge.net/projects/nsis/files/NSIS%20{{ version.split(".")[0] }}/{{ version }}/nsis-{{ version }}.zip
