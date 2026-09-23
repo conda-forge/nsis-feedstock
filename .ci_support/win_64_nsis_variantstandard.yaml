@@ -4,5 +4,3 @@ channel_targets:
 - conda-forge main
 nsis_variant:
 - standard
-target_platform:
-- win-64
