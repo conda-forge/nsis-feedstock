@@ -8,8 +8,9 @@ noarch_platforms:
   - linux_64
   - win_64
 provider:
-  linux_aarch64: default
-  linux_ppc64le: default
-  win_arm64: default
+  linux_aarch64: false
+  linux_ppc64le: false
+  osx: false
+  win_arm64: false
 workflow_settings:
   store_build_artifacts: false
