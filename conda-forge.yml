@@ -1,9 +1,18 @@
-provider: {linux_aarch64: azure, linux_ppc64le: azure}
 conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
 conda_build:
   pkg_format: '2'
+linter:
+  skip:
+    - lint_noarch_selectors
+noarch_platforms:
+  - win_64
+provider:
+  linux_aarch64: false
+  linux_ppc64le: false
+  osx: false
+  win_arm64: false
 workflow_settings:
   store_build_artifacts: false
