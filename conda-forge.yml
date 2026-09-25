@@ -4,6 +4,9 @@ github:
   tooling_branch_name: main
 conda_build:
   pkg_format: '2'
+linter:
+  skip:
+    - lint_noarch_selectors
 noarch_platforms:
   - win_64
 provider:
