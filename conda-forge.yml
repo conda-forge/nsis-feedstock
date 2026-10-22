@@ -1,18 +1,21 @@
+build_platform:
+  win_arm64: win_arm64
+conda_build:
+  pkg_format: '2'
 conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
-conda_build:
-  pkg_format: '2'
 linter:
   skip:
-    - lint_noarch_selectors
+  - lint_noarch_selectors
 noarch_platforms:
-  - win_64
+- win_64
 provider:
   linux_aarch64: false
   linux_ppc64le: false
   osx: false
-  win_arm64: false
+  win_arm64: default
+test: native_and_emulated
 workflow_settings:
   store_build_artifacts: false
